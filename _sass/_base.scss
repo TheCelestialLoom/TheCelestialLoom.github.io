@@ -97,7 +97,6 @@ body {
     width: 65%;
     display: block;
     background-color: #b12704;
-    border-color: #8a8b8d;
     margin: 0 auto;
     font-weight: bold;
     color: #FEFEFA;
@@ -166,8 +165,12 @@ body {
 .blog-footer {
     font-style: italic;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-size: 1.60em;
+    padding-bottom: 20px;
+    em {
+      color: #b12704; 
+      font-weight: bold;
+    }
 }
 .blog-wrapper {
     background-color: #fbfafa;
@@ -378,4 +381,10 @@ body {
     font-size: 0.8em;
     font-weight: bold;
     text-align: center;
+}
+.blog-icon {
+    font-size: 2em;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
 }
