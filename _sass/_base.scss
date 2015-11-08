@@ -3,7 +3,13 @@ body {
     background-color: #8a8b8d;
     font-family: 'Merriweather', serif;
 }
-
+li {
+    list-style: none;
+}
+li:before {
+    content: "\2600";
+    padding-right: 10px;
+}
 @font-face {
     font-family: 'AstroGadget';
     src: url("../public/fonts/AstroGadget.ttf") format('truetype');
@@ -92,6 +98,9 @@ body {
     a:hover {
         color: #383838;
     }
+}
+.banner-navbar li:before {
+    content: none;
 }
 .service-button {
     width: 65%;
