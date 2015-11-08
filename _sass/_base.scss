@@ -345,3 +345,23 @@ body {
     margin: 0 auto;
     max-width: 500px;
 }
+.copy-404 {
+    text-shadow: 0 1px 0 #e5e4e4;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.25;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-style: bold;
+    font-size: 2em;
+    i {
+        font-size: 3em;
+    }
+    p {
+        font-style: italic;
+    }
+    div {
+        padding: 15px;
+    }
+}
