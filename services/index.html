@@ -17,8 +17,19 @@ title: Services
 	    <h3 class="service-title">{{ service.title }}</h3>
 	    <p>{{ service.content }}</p>
 	    <div class="service-purchase">
-	    	<p class="service-price">${{ service.price }}</p>
-	    	{{ service.paypal-button }}
+	    	<div class="container-fluid">
+		    	<div class="col-xs-4">
+			    	<p class="service-price">${{ service.price }}</p>
+		    	</div>
+		    	<div class="col-xs-8">
+			    	{{ service.paypal-button }}
+		    	</div>
+		    	<div class="col-xs-12">
+		    		<p class="service-disclaimer">
+		    			<i class="fa fa-check-square"></i>
+							Includes tax and shipping (if applicable)</p>
+		    	</div>
+	    	</div>
 	    </div>
     </div>
 	</div>

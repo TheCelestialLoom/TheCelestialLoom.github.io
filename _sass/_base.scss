@@ -96,12 +96,16 @@ body {
 .service-button {
     width: 65%;
     display: block;
-    background-color: #138808;
-    border-color: #568203;
+    background-color: #b12704;
+    border-color: #8a8b8d;
     margin: 0 auto;
     font-weight: bold;
     color: #FEFEFA;
 }
+.service-button:hover, .service-button:hover {
+    background-color: #CD5C5C;
+}
+
 .bio {
     width: 70%;
     display: block;
@@ -118,18 +122,19 @@ body {
 }
 .service-purchase {
     border-top: 1px solid #D8D8D8;
-    padding-right: 20px;
     padding-top: 10px;
     text-align: right;
 }
 .service-price {
     font-style: italic;
     font-size: large;
-    color: black;
+    color: #b12704;
+    font-weight: bold;
     padding-right: 15px;
 }
 .service-title {
     font-style: italic;
+    color: #b12704;
 }
 .service-content {
     overflow: auto;
@@ -278,6 +283,10 @@ body {
         margin-bottom: 0px;
         padding-top: 0px;
     }
+    .service-purchase {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
 }
 
 .blog-content {
@@ -364,4 +373,9 @@ body {
     div {
         padding: 15px;
     }
+}
+.service-disclaimer {
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
 }
