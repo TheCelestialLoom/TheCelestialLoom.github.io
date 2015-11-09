@@ -6,8 +6,9 @@ title: Services
 <header class="post-header">
   <h1 class="post-title text-signature">{{ page.title }}</h1>
 </header>
-
-{% for service in site.services %}
+<div class="row service-row">
+{% assign services = site.services | sort: 'order' %}
+{% for service in services %}
 
 	{% assign index_modulo_3 = forloop.index | modulo : 3 %}
 	{% assign index_modulo_2 = forloop.index | modulo : 2 %}
@@ -45,3 +46,4 @@ title: Services
 	{% endif %}
 	
 {% endfor %}
+</div>
