@@ -76,6 +76,7 @@ li:before {
         font-size: 2.5em;
     }
     p {
+        margin-top: -15px;
         font-size: 1.5em;
     }
     img {
@@ -115,17 +116,18 @@ li:before {
 }
 
 .bio {
-    width: 70%;
     display: block;
     margin: 0 auto;
     padding-bottom: 10px;
     padding-top: 10px;
     border-top: 1px solid #D8D8D8;
     text-align: center;
+    .bio-text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 .content {
-    padding-left: 25px;
-    padding-right: 25px;
     padding-top: 20px;
 }
 .service-purchase {
@@ -151,8 +153,8 @@ li:before {
 .service-wrapper {
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     ul {
         font-size: small;
         font-style: italic;
@@ -221,13 +223,19 @@ li:before {
         margin-left: 25px;
     }
     .content {
+        padding-top: 30px;
         margin-left: 30px;
     }
     .page-content {
         margin-left: 10px;
         margin-right: 10px;
     }
+    .service-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
+
 @media (min-width: 992px) {
     .banner {
         height: 200px;
@@ -257,11 +265,16 @@ li:before {
         margin-left: 30px;
     }
     .content {
-        margin-left: 30px;
+        padding-top: 40px;
+        margin-left: 50px;
     }
     .page-content {
         margin-left: 10px;
         margin-right: 10px;
+    }
+    .service-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -279,6 +292,7 @@ li:before {
         padding-bottom: 20px;
         padding-left: 25px;
         padding-right: 25px;
+        border-bottom: 1px solid #d3d3d3;
     }
     .welcome-portal {
         margin-bottom: 10px;
@@ -286,6 +300,10 @@ li:before {
     .blog-content {
         border-top: 2px solid #D8D8D8;
         padding-top: 10px;
+    }
+    .blog-wrapper {
+        margin-left: -20px;
+        margin-right: -20px;
     }
     .icon-panel {
         text-align: center;
@@ -299,6 +317,9 @@ li:before {
         margin-left: -10px;
         margin-right: -10px;
     }
+    .service {
+        border-bottom: 1px solid #d3d3d3;
+    }
 }
 
 .blog-content {
@@ -309,7 +330,10 @@ li:before {
     overflow: auto;
 }
 .page-content {
-    padding: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
 }
 .about {
     font-size: small;
@@ -328,6 +352,7 @@ li:before {
     color:  #DEDEDE;
 }
 .text-signature {
+    font-size: 3rem;
     font-style: italic;
     font-family: 'Berkshire Swash', cursive;
     padding-bottom: 10px;
@@ -426,4 +451,25 @@ li:before {
     display: block;
     padding-left: 5px;
     padding-right: 5px;
+}
+.dharma-wheel {
+    font-size: 4rem;
+    text-align: center;
+}
+.clearfix {
+    &.visible-md-block, &.visible-sm-block {
+        border-bottom: 1px solid #d3d3d3;
+    }
+}
+.welcome-portal {
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-bottom: 20px;
+    display: table;
+    
+    .profile-column {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+    }
 }
