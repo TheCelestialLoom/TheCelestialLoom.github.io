@@ -9,7 +9,14 @@ blog_paragraphs: 5 # number of <p> tags rendered from RSS feed
 # Build settings
 markdown: kramdown
 collections:
-  - services
-  - signs
-  - houses
-  - planets
+  services:
+    output: true
+  signs:
+  houses:
+  planets:
+defaults:
+  - 
+    scope:
+      collection: services
+    values: 
+      layout: service-page

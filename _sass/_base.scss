@@ -223,7 +223,7 @@ li:before {
         margin-left: 25px;
     }
     .content {
-        padding-top: 30px;
+        padding-top: 40px;
         margin-left: 30px;
     }
     .page-content {
@@ -234,6 +234,22 @@ li:before {
         padding-left: 10px;
         padding-right: 10px;
     }
+    .form-inline {
+        display: flex;
+        &.time {
+            justify-content: center;
+            .form-control {
+                max-width: 25%;
+            }
+        }
+        &.date {
+            justify-content: space-around;
+            .form-control {
+                max-width: 30%;
+            }
+        }
+    }
+
 }
 
 @media (min-width: 992px) {
@@ -265,7 +281,7 @@ li:before {
         margin-left: 30px;
     }
     .content {
-        padding-top: 40px;
+        padding-top: 50px;
         margin-left: 50px;
     }
     .page-content {
@@ -326,7 +342,7 @@ li:before {
     border-top: 1px solid #d3d3d3;
     background-color: white;
     padding: 20px;
-    height: 320px;
+    height: 350px;
     overflow: auto;
 }
 .page-content {
@@ -472,4 +488,31 @@ li:before {
         vertical-align: middle;
         float: none;
     }
+}
+.form-inline {
+    padding: 15px;
+}
+.testimonial-bar {
+    border: 1px solid #d3d3d3;
+    padding: 20px;
+    font-size: 2rem;
+    font-style: italic;
+    color: gray;
+    margin: 20px;
+}
+.service-page {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.service-checkout {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #d3d3d3;
+    ul {
+        margin-top: 20px;
+    }
+}
+.service-guide {
+    padding: 20px;
+    font-style: italic;
+    font-size: 1.5rem;
 }

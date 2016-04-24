@@ -1,0 +1,88 @@
+---
+layout: default
+---
+
+<header class="post-header">
+  <h1 class="post-title text-signature">Service</h1>
+</header>
+
+<div class="page-content area-panel">
+<div class="row">    
+    <!-- about panel -->
+    <div class="col-md-6 col-sm-6 col-xs-12 service-page">
+      <div class="service-checkout">
+        <h2 class="service-title">{{ page.title }}</h2>
+        {{ content }}
+      </div>
+     {% if page.type == "online" %}
+       <div class="service-guide">
+         <h3><i class="fa fa-search" aria-hidden="true"></i> Online Services</h3>
+         <ul>
+           <li>All materials will be securely delivered with 
+           <a href="https://www.dropbox.com/home" target="_blank">Dropbox</a> to your preferred email, and will be available
+           for download.</li>
+           <li>Please allow 1-2 weeks for preperation and delivery time.</li>
+           <li>Secure checkout with 
+           <a href="https://www.paypal.com/home" target="_blank">Paypal</a></li>
+         </ul>
+         <p><strong>Questions about this service or online ordering? </strong>
+         Contact Nikki directly at <a href="mailto:nikiastro@att.net">nikiastro@att.net</a>!</p>
+       </div>
+     {% endif %}
+     {% if page.type == "in-person" %}
+       <div>
+         <h1>More on online services</h1>
+       </div>
+     {% endif %}
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <h3 class="service-title">Place an Order</h3>
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" placeholder="Email">
+          <p class="help-block">Your preferred email address</p>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="clientName" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <p class="help-block">Birth Information</p>
+          <div class="form-inline date">
+            <select class="form-control" id="birthMonth">
+              <option>Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <input type="text" class="form-control" id="birthDay" placeholder="Day">
+            <input type="text" class="form-control" id="birthYear" placeholder="Year">
+            <br />
+          </div>
+          <div class="form-inline time">
+            <input type="text" class="form-control" id="birthTime" placeholder="Time*">
+            <select class="form-control" id="birthTimeAm">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+          <input type="text" class="form-control" id="birthPlace" placeholder="Place of Birth*">
+          <p class="help-block">* or approximate, if known. Any service can be completed if unknown,
+          but exact time and place provide the greatest detail and insight.</p>
+        </div>
+      </form>
+          <div class="testimonial-bar">
+        <p>"Who knew so much insight could be gleaned from your birth information! Can't wait to get my solar return."</p>
+        <small>- Beau, St. Louis</small>
+      </div>
+    </div>
+
+</div>
