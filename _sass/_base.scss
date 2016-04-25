@@ -3,6 +3,9 @@ body {
     background-color: #8a8b8d;
     font-family: 'Merriweather', serif;
 }
+ul {
+    padding-left: 15px;
+}
 li {
     list-style: none;
 }
@@ -490,7 +493,12 @@ li:before {
     }
 }
 .form-inline {
-    padding: 15px;
+    padding-bottom: 15px;
+}
+.help-block {
+    font-size: 1.25rem;
+    font-style: italic;
+    text-align: center;
 }
 .testimonial-bar {
     border: 1px solid #d3d3d3;

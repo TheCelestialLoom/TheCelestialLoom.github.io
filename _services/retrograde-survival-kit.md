@@ -1,4 +1,6 @@
 ---
+layout: service-page
+type: "online"
 order: 7
 title: "Mercury Retrograde Survival Kit - Online"
 price: "35.00"

@@ -1,4 +1,6 @@
 ---
+layout: service-page
+type: "in-person"
 order: 4
 title: "Solar Return Chart - In Person"
 price: "155.00"

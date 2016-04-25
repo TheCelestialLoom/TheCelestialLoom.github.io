@@ -14,9 +14,3 @@ collections:
   signs:
   houses:
   planets:
-defaults:
-  - 
-    scope:
-      collection: services
-    values: 
-      layout: service-page

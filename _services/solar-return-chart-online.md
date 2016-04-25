@@ -1,4 +1,6 @@
 ---
+layout: service-page
+type: "online"
 order: 3
 title: "Solar Return Chart - Online"
 price: "125.00"

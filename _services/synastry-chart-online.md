@@ -1,4 +1,6 @@
 ---
+layout: service-page
+type: "online"
 order: 5
 title: "Synastry Chart - Online"
 price: "160.00"

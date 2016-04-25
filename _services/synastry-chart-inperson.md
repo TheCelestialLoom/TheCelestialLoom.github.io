@@ -1,4 +1,6 @@
 ---
+layout: service-page
+type: "in-person"
 order: 6
 title: "Synastry Chart - In Person"
 price: "200.00"

@@ -1,4 +1,6 @@
 ---
+layout: service-page
+type: "online"
 order: 8
 title: "Native American Medicine Wheel - Online"
 price: "40.00"
