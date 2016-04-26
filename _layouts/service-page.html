@@ -47,7 +47,7 @@ layout: default
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12">
       <h3 class="service-title">Place an Order</h3>
-      <form>
+      <form id="order-form">
         <div class="form-group">
           <input type="email" class="form-control" id="email" placeholder="Email">
           <p class="help-block">Your preferred email address</p>
@@ -89,10 +89,14 @@ layout: default
           but exact time and place provide the greatest detail and insight.</p>
         </div>
       </form>
-          <div class="testimonial-bar">
+      <div class="paypal-form">
+        {{page.paypal-button}}
+      </div>
+      <div class="testimonial-bar">
         <p>"Who knew so much insight could be gleaned from your birth information! Can't wait to get my solar return."</p>
         <small>- Beau, St. Louis</small>
       </div>
     </div>
 
 </div>
+<script src="{{ site.baseurl }}public/javascript/form.js"></script>
