@@ -78,16 +78,15 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 		registerCheckoutClick: function($checkoutButton) {
 		    $checkoutButton.click(function(element) {
 		        element.preventDefault();
-		        
+		        clearErrors();
 		        var fieldValues = collectFieldValuesFromForm();
 		        if (checkForFieldErrors(fieldValues)) {
 		           return false;
 		        }
-		        
-		        clearErrors();
-        		var targetValue = compileFields(collectFieldValuesFromForm());
+		 
+        		var targetValue = compileFields(fieldValues);
 		        $paypalField.val(targetValue.join('; '));
-		        $modalField.text(targetValue.join('\n'));
+		        $modalField.html(targetValue.join('<br />'));
 		    });
 		}
 	};
@@ -97,6 +96,6 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 // On jquery load
 $(function() {
     $(".paypal-form table").hide();
-	var paypalFormCompiler = formCompiler($("#order-form"), $("[name='os0']"), $(".modal-body"));
+	var paypalFormCompiler = formCompiler($("#order-form"), $("[name='os0']"), $(".birth-form-info"));
 	paypalFormCompiler.registerCheckoutClick($("#checkoutButton"));
 });

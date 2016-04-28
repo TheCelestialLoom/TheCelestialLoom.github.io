@@ -524,12 +524,28 @@ li:before {
     font-style: italic;
     font-size: 1.5rem;
 }
-.paypal-form {
-    input {
-        display: block;
-        margin: 0 auto;
-    }
-}
+
 .modal-backdrop {
     z-index: 0;
+}
+.modal-footer {
+    .btn-default {
+        float: left;
+    }
+}
+.checkout-modal-service {
+    text-align: center;
+    font-size: 1.75rem;
+}
+.checkout-price {
+    font-style: italic;
+    color: #b12704;
+    font-weight: bold;
+}
+#checkoutButton {
+    display: block;
+    margin: 0 auto;
+}
+.alert {
+    padding: 5px;
 }

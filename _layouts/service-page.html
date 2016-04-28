@@ -90,7 +90,7 @@ layout: default
         </div>
       </form>
       <button type="button" id="checkoutButton" class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">
-        Checkout
+        Confirm and Checkout
       </button>
       <div class="testimonial-bar">
         <p>"Who knew so much insight could be gleaned from your birth information! Can't wait to get my solar return."</p>
@@ -103,13 +103,17 @@ layout: default
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">{{page.title}}</h4>
+            <h4 class="modal-title" id="myModalLabel">Checkout</h4>
           </div>
           <div class="modal-body">
-            ...
+            <p><small>Birth Information:</small></p>
+            <p class="birth-form-info"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="checkout-modal-service">
+              <p>{{page.title}} - <span class="checkout-price">${{page.price}}</span></p>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
               <div class="paypal-form">
                 {{page.paypal-button}}
               </div>
