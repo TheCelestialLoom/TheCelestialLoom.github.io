@@ -1,35 +1,95 @@
 // Form Module
-var formCompiler = function($sourceForm, $targetField) {
+var formCompiler = function($sourceForm, $paypalField, $modalField) {
 	var collectFieldValuesFromForm = function() {
-	    var fieldValues = [];
-		fieldValues.push($sourceForm.find("#clientName").val());
-		fieldValues.push($sourceForm.find("#email").val());
-		var birthDate = $sourceForm.find("#birthMonth").val()
-		    + " "
-		    + $sourceForm.find("#birthDay").val()
-		    + ", "
-		    + $sourceForm.find("#birthYear").val();
-		var birthTime = $sourceForm.find("#birthTime").val()
-		    + $sourceForm.find("#birthTimeAm").val();
-		fieldValues.push(birthDate);
-		fieldValues.push(birthTime);
-		fieldValues.push($sourceForm.find("#birthPlace").val());
-		return fieldValues;
+	    var fields = ["#clientName", "#email", "#birthPlace"];
+	    var dateFields = ["#birthMonth", "#birthDay", "#birthYear"];
+	    var timeFields =  ["#birthTime", "#birthTimeAm"];
+	    var mapFieldValues = function(fieldArray) {
+    	    return fieldArray.map(function(field) {
+    	        var $field = $sourceForm.find(field);
+    	        return {
+    	            $field: $field,
+    	            value: $field.val()
+    	        };
+    	    });
+	    };
+	    return {
+    	    fieldValues: mapFieldValues(fields),
+    	    dateFieldValues: mapFieldValues(dateFields),
+    	    timeFieldValues: mapFieldValues(timeFields)
+	    };
 	};
 	
-	var compileFields = function(fieldValues) {
-		var targetValue = fieldValues.join('; ');
-		$targetField.val(targetValue);
+	var compileFields = function(fieldValueArray) {
+	    var fieldValues = fieldValueArray.fieldValues.map(function(field) {
+	        return field.value;
+	    });
+	    var dateValues = fieldValueArray.dateFieldValues.map(function(field) {
+	       return field.value; 
+	    });
+	    var timeValues = fieldValueArray.timeFieldValues.map(function(field) {
+	       return field.value; 
+	    });
+	    fieldValues.push(dateValues.join(' '));
+	    fieldValues.push(timeValues.join(''));
+	    
+        return fieldValues;
+	};
+	
+	var checkForFieldErrors = function(fieldValueArray) {
+	   var errorsFlag = false;
+	   var warning = "<div class='alert alert-danger'>required field</div>";
+	   fieldValueArray.fieldValues.forEach(function(field) {
+	      if (field.value == "" || field.value == null) {
+	          if (field.$field.attr("data-optional") !== "true") {
+	            field.$field.after(warning);
+	            errorsFlag = true;
+	          }
+	      } 
+	   }); 
+	   for(var i = 0; i < fieldValueArray.timeFieldValues.length; i++) {
+	       var field = fieldValueArray.timeFieldValues[i];
+	       if (field.value == "" || field.value == null) {
+	          if (field.$field.attr("data-optional") !== "true") {
+	            field.$field.parent().after(warning);
+	            errorsFlag = true;
+	            break;
+	          }
+	      } 
+	   }
+   	   for(var i = 0; i < fieldValueArray.dateFieldValues.length; i++) {
+	       var field = fieldValueArray.dateFieldValues[i];
+	       if (field.value == "" || field.value == null) {
+	          if (field.$field.attr("data-optional") !== "true") {
+	            field.$field.parent().after(warning);
+	            errorsFlag = true;
+	            break;
+	          }
+	      } 
+	   }
+	   return errorsFlag;
+	};
+	
+	var clearErrors = function() {
+	    $(".alert.alert-danger").remove();
 	};
 	
 	return {
-		registerCompilation: function() {
-			$sourceForm.find("input, select").each(function() {
-				$(this).on("input change blur keyup keydown", function() {
-					compileFields(collectFieldValuesFromForm());
-				});
-			});
-		},
+		registerCheckoutClick: function($checkoutButton) {
+		    $checkoutButton.click(function(element) {
+		        element.preventDefault();
+		        
+		        var fieldValues = collectFieldValuesFromForm();
+		        if (checkForFieldErrors(fieldValues)) {
+		           return false;
+		        }
+		        
+		        clearErrors();
+        		var targetValue = compileFields(collectFieldValuesFromForm());
+		        $paypalField.val(targetValue.join('; '));
+		        $modalField.text(targetValue.join('\n'));
+		    });
+		}
 	};
 	
 };
@@ -37,6 +97,6 @@ var formCompiler = function($sourceForm, $targetField) {
 // On jquery load
 $(function() {
     $(".paypal-form table").hide();
-	var paypalFormCompiler = formCompiler($("#order-form"), $("[name='os0']"));
-	paypalFormCompiler.registerCompilation();
+	var paypalFormCompiler = formCompiler($("#order-form"), $("[name='os0']"), $(".modal-body"));
+	paypalFormCompiler.registerCheckoutClick($("#checkoutButton"));
 });
