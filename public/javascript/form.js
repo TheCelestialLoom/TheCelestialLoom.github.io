@@ -36,9 +36,10 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
         return fieldValues;
 	};
 	
-	var checkForFieldErrors = function(fieldValueArray) {
+	var checkForFieldErrors = function(fieldValueArray, $submitButton) {
 	   var errorsFlag = false;
 	   var warning = "<div class='alert alert-danger'>required field</div>";
+	   var formWarning = "<div class='alert alert-danger'>some required fields are missing</div>";
 	   fieldValueArray.fieldValues.forEach(function(field) {
 	      if (field.value == "" || field.value == null) {
 	          if (field.$field.attr("data-optional") !== "true") {
@@ -67,6 +68,9 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 	          }
 	      } 
 	   }
+	   if (errorsFlag) {
+	       $submitButton.after(formWarning);
+	   }
 	   return errorsFlag;
 	};
 	
@@ -80,7 +84,7 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 		        element.preventDefault();
 		        clearErrors();
 		        var fieldValues = collectFieldValuesFromForm();
-		        if (checkForFieldErrors(fieldValues)) {
+		        if (checkForFieldErrors(fieldValues, $(element.target))) {
 		           return false;
 		        }
 		 

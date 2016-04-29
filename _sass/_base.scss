@@ -134,16 +134,18 @@ li:before {
     padding-top: 20px;
 }
 .service-purchase {
-    border-top: 1px solid #D8D8D8;
     padding-top: 10px;
     text-align: right;
 }
 .service-price {
     font-style: italic;
-    font-size: large;
+    font-size: 2rem;
     color: #b12704;
     font-weight: bold;
     padding-right: 15px;
+    &.center {
+        text-align: center;
+    }
 }
 .service-title {
     font-style: italic;
@@ -394,8 +396,7 @@ li:before {
     width: 300px;
     margin: 0 auto;
     line-height: 1.25;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
     text-align: center;
     font-style: bold;
     .gadget {
@@ -492,9 +493,6 @@ li:before {
         float: none;
     }
 }
-.form-inline {
-    padding-bottom: 15px;
-}
 .help-block {
     font-size: 1.25rem;
     font-style: italic;
@@ -528,6 +526,16 @@ li:before {
 .modal-backdrop {
     z-index: 0;
 }
+.modal-body {
+    .lead {
+        font-style: italic;
+        color: #b12704;
+        font-size: 1.75rem;
+    }
+}
+.birth-form-info {
+    text-align: center;
+}
 .modal-footer {
     .btn-default {
         float: left;
@@ -548,4 +556,6 @@ li:before {
 }
 .alert {
     padding: 5px;
+    padding-left: 15px;
+    font-weight: bold;
 }
