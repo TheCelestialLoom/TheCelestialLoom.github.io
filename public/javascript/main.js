@@ -1,6 +1,8 @@
 ---
 ---
-$(function() {
+
+// RSS Module
+var rssFeedCreator = function() {
 	var numberOfParagraphs = {{ site.blog_paragraphs }};
 	
 	var parseRSS = function(url, successCallback, errorCallback) {
@@ -35,12 +37,20 @@ $(function() {
 			);
 	}
 	
-	parseRSS('https://nikiastro.wordpress.com/feed/', function(feed) {
-		var lastEntry = feed.entries[0];
-		var $entryContent = $(lastEntry.content);
-		var $blogContent= $entryContent.filter("p, ul").slice(0,numberOfParagraphs);
-		renderContent(lastEntry, $blogContent);
-	}, function() {
-		renderError();
-	});
+	return {
+		render: function() {
+			parseRSS('https://nikiastro.wordpress.com/feed/', function(feed) {
+				var lastEntry = feed.entries[0];
+				var $entryContent = $(lastEntry.content);
+				var $blogContent= $entryContent.filter("p, ul").slice(0,numberOfParagraphs);
+				renderContent(lastEntry, $blogContent);
+			}, function() {
+				renderError();
+			});
+		}
+	}
+};
+
+$(function() {
+	rssFeedCreator().render();
 });

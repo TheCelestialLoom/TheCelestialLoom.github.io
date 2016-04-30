@@ -1,0 +1,96 @@
+---
+layout: default
+---
+
+<header class="post-header">
+  <h1 class="post-title text-signature">Service</h1>
+</header>
+
+<div class="page-content area-panel">
+<div class="row">    
+    <!-- about panel -->
+    <div class="col-md-6 col-sm-6 col-xs-12 service-page">
+      <div class="service-checkout">
+        <h2 class="service-title">{{ page.title }}</h2>
+        {{ content }}
+        <div class="service-details">
+          {% for detail in page.details %}
+            <p>{{detail}}</p>
+          {% endfor %}
+        </div>
+        <p class="service-price center"><span>Price: </span>${{ page.price }}</p>
+      </div>
+     {% if page.type == "online" %}
+       <div class="service-guide">
+         <h3><i class="fa fa-search" aria-hidden="true"></i> Online Services</h3>
+         <ul>
+           <li>All materials will be securely delivered with 
+           <a href="https://www.dropbox.com/home" target="_blank">Dropbox</a> to your preferred email, where they will be available
+           for download directly from the cloud. No email attachments and no sign up necessary!</li>
+           <li>Please allow 1-2 weeks for preparation and delivery time.</li>
+           <li>Secure checkout with 
+           <a href="https://www.paypal.com/home" target="_blank">Paypal</a></li>
+         </ul>
+         <p><strong>Questions about this service or online ordering? </strong>
+         Contact Nikki directly at <a href="mailto:nikiastro@att.net">nikiastro@att.net</a>!</p>
+       </div>
+     {% endif %}
+     {% if page.type == "in-person" %}
+       <div class="service-guide">
+         <h3><i class="fa fa-search" aria-hidden="true"></i> In-Person Services</h3>
+         <ul>
+           <li>After placing your order, you'll receive a confirmation email from Nikki
+           to arrange a local meeting. In-person services last approximately 90 minutes.</li>
+           <li>All materials will be assembled in a full-color packet.</li>
+           <li>Please allow 1-2 weeks preperation time when coordinating the best time to meet.</li>
+           <li>Secure checkout with 
+           <a href="https://www.paypal.com/home" target="_blank">Paypal</a></li>
+         </ul>
+         <p><strong>Questions about this service or online ordering? </strong>
+         Contact Nikki directly at <a href="mailto:nikiastro@att.net">nikiastro@att.net</a>!</p>
+       </div>
+     {% endif %}
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <h3 class="service-title">Place an Order</h3>
+      {% if page.double == true %}
+          {% include double-order-form.html %}
+      {% else %}
+          {% include single-order-form.html %}
+      {% endif %}
+      
+      <button type="button" id="checkoutButton" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#checkoutModal">
+        Confirm and Checkout
+      </button>
+    </div>
+    <div class="col-xs-12">
+       <div class="testimonial-bar">
+        <p>"Who knew so much insight could be gleaned from your birth information! Can't wait to get my solar return."</p>
+        <small>- Beau, St. Louis</small>
+      </div>
+    </div>
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Checkout</h4>
+          </div>
+          <div class="modal-body">
+            <p class="lead">Birth Information:</p>
+            <p class="birth-form-info"></p>
+          </div>
+          <div class="modal-footer">
+            <div class="checkout-modal-service">
+              <p>{{page.title}} - <span class="checkout-price">${{page.price}}</span></p>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+              <div class="paypal-form">
+                {{page.paypal-button}}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="{{ site.baseurl }}public/javascript/form.js"></script>

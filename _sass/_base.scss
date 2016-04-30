@@ -3,6 +3,9 @@ body {
     background-color: #8a8b8d;
     font-family: 'Merriweather', serif;
 }
+ul {
+    padding-left: 15px;
+}
 li {
     list-style: none;
 }
@@ -76,6 +79,7 @@ li:before {
         font-size: 2.5em;
     }
     p {
+        margin-top: -15px;
         font-size: 1.5em;
     }
     img {
@@ -115,34 +119,48 @@ li:before {
 }
 
 .bio {
-    width: 70%;
     display: block;
     margin: 0 auto;
     padding-bottom: 10px;
     padding-top: 10px;
     border-top: 1px solid #D8D8D8;
     text-align: center;
+    .bio-text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 .content {
-    padding-left: 25px;
-    padding-right: 25px;
     padding-top: 20px;
 }
 .service-purchase {
-    border-top: 1px solid #D8D8D8;
-    padding-top: 10px;
-    text-align: right;
+    padding: 10px;
+    * {
+        display: inline-block;
+    }
+    text-align: center;
 }
 .service-price {
     font-style: italic;
-    font-size: large;
+    font-size: 2rem;
     color: #b12704;
     font-weight: bold;
     padding-right: 15px;
+    &.center {
+        text-align: center;
+        font-size: 2.75rem;
+    }
+    span {
+        color: black;
+        font-size: 2rem;
+    }
 }
 .service-title {
     font-style: italic;
     color: #b12704;
+    &.center {
+        text-align: center;
+    }
 }
 .service-content {
     overflow: auto;
@@ -151,8 +169,8 @@ li:before {
 .service-wrapper {
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     ul {
         font-size: small;
         font-style: italic;
@@ -221,13 +239,35 @@ li:before {
         margin-left: 25px;
     }
     .content {
+        padding-top: 40px;
         margin-left: 30px;
     }
     .page-content {
         margin-left: 10px;
         margin-right: 10px;
     }
+    .service-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .form-inline {
+        display: flex;
+        &.time {
+            justify-content: center;
+            .form-control {
+                max-width: 25%;
+            }
+        }
+        &.date {
+            justify-content: space-around;
+            .form-control {
+                max-width: 30%;
+            }
+        }
+    }
+
 }
+
 @media (min-width: 992px) {
     .banner {
         height: 200px;
@@ -257,11 +297,16 @@ li:before {
         margin-left: 30px;
     }
     .content {
-        margin-left: 30px;
+        padding-top: 50px;
+        margin-left: 40px;
     }
     .page-content {
         margin-left: 10px;
         margin-right: 10px;
+    }
+    .service-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -279,6 +324,7 @@ li:before {
         padding-bottom: 20px;
         padding-left: 25px;
         padding-right: 25px;
+        border-bottom: 1px solid #d3d3d3;
     }
     .welcome-portal {
         margin-bottom: 10px;
@@ -286,6 +332,10 @@ li:before {
     .blog-content {
         border-top: 2px solid #D8D8D8;
         padding-top: 10px;
+    }
+    .blog-wrapper {
+        margin-left: -20px;
+        margin-right: -20px;
     }
     .icon-panel {
         text-align: center;
@@ -295,9 +345,8 @@ li:before {
         margin-bottom: 0px;
         padding-top: 0px;
     }
-    .service-purchase {
-        margin-left: -10px;
-        margin-right: -10px;
+    .service {
+        border-bottom: 1px solid #d3d3d3;
     }
 }
 
@@ -305,11 +354,14 @@ li:before {
     border-top: 1px solid #d3d3d3;
     background-color: white;
     padding: 20px;
-    height: 320px;
+    height: 350px;
     overflow: auto;
 }
 .page-content {
-    padding: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
 }
 .about {
     font-size: small;
@@ -328,6 +380,7 @@ li:before {
     color:  #DEDEDE;
 }
 .text-signature {
+    font-size: 3rem;
     font-style: italic;
     font-family: 'Berkshire Swash', cursive;
     padding-bottom: 10px;
@@ -350,8 +403,7 @@ li:before {
     width: 300px;
     margin: 0 auto;
     line-height: 1.25;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
     text-align: center;
     font-style: bold;
     .gadget {
@@ -418,4 +470,108 @@ li:before {
 .service-row {
     margin-left: -5px;
     margin-right: -5px;
+}
+.page-content-intro {
+    font-style: italic;
+    color: #777;
+    margin: 0 auto;
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.dharma-wheel {
+    font-size: 4rem;
+    text-align: center;
+}
+.clearfix {
+    &.visible-md-block, &.visible-sm-block {
+        border-bottom: 1px solid #d3d3d3;
+    }
+}
+.welcome-portal {
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-bottom: 20px;
+    display: table;
+    
+    .profile-column {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+    }
+}
+.help-block {
+    font-size: 1.25rem;
+    font-style: italic;
+    text-align: center;
+}
+.testimonial-bar {
+    border: 1px solid #d3d3d3;
+    padding: 20px;
+    font-size: 2rem;
+    font-style: italic;
+    color: gray;
+    margin: 20px;
+}
+.service-page {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.service-checkout {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #d3d3d3;
+    ul {
+        margin-top: 20px;
+    }
+}
+.service-guide {
+    padding: 20px;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+.modal-backdrop {
+    z-index: 0;
+}
+.modal-body {
+    .lead {
+        font-style: italic;
+        color: #b12704;
+        font-size: 1.75rem;
+    }
+}
+.birth-form-info {
+    text-align: center;
+}
+.modal-footer {
+    .btn-default {
+        float: left;
+    }
+}
+.checkout-modal-service {
+    text-align: center;
+    font-size: 1.75rem;
+}
+.checkout-price {
+    font-style: italic;
+    color: #b12704;
+    font-weight: bold;
+}
+#checkoutButton {
+    display: block;
+    margin: 0 auto;
+}
+.alert {
+    padding: 5px;
+    padding-left: 15px;
+    font-weight: bold;
+}
+.service-details {
+    padding: 20px;
+    font-style: italic;
+    font-size: 1.5rem;
+    i {
+        font-size: 3rem;
+        margin-right: 5px;
+    }
 }

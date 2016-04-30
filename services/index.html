@@ -1,12 +1,14 @@
 ---
-layout: default
+layout: page
 title: Services
 ---
-
-<header class="post-header">
-  <h1 class="post-title text-signature">{{ page.title }}</h1>
-</header>
+<div class="row page-content-row page-content-intro">
+  <h4><strong>Not sure where to begin?</strong>
+  An <a href="{{ site.baseurl }}services/natal-chart-online.html">online</a> or <a href="{{ site.baseurl }}services/natal-chart-inperson.html">in-person natal chart service</a> is the best way to build a foundation for understanding the energies at play
+  in your birth chart. Explore all of my services below...</h4>
+</div>
 <div class="row service-row">
+	
 {% assign services = site.services | sort: 'order' %}
 {% for service in services %}
 
@@ -14,20 +16,12 @@ title: Services
 	{% assign index_modulo_2 = forloop.index | modulo : 2 %}
 	
 	<div class="col-md-4 col-sm-6 col-xs-12 service">
-		<div class="service-wrapper area-panel">
-	    <h3 class="service-title">{{ service.title }}</h3>
+		<div class="service-wrapper">
+	    <a href="{{ service.url }}"><h3>{{ service.title }}</h3></a>
 	    <p>{{ service.content }}</p>
 	    <div class="service-purchase">
-	    	<div class="container-fluid">
-		    	<div class="col-xs-4">
-			    	<p class="service-price">${{ service.price }}</p>
-		    	</div>
-		    	<div class="col-xs-8">
-			    	<p class="service-disclaimer">
-			    		To place an order, send an email to Nikki directly at <a href="mailto:nikiastro@att.net">nikiastro@att.net</a> 
-			    	</p>
-		    	</div>
-	    	</div>
+	    	<p class="service-price">${{ service.price }}</p>
+	    	<a href="{{ service.url }}" class="btn btn-primary">View Service</a>
 	    </div>
     </div>
 	</div>
