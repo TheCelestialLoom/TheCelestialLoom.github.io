@@ -20,14 +20,8 @@ title: Services
 	    <a href="{{ service.url }}"><h3>{{ service.title }}</h3></a>
 	    <p>{{ service.content }}</p>
 	    <div class="service-purchase">
-	    	<div class="container-fluid">
-		    	<div class="col-xs-5">
-			    	<p class="service-price">${{ service.price }}</p>
-		    	</div>
-		    	<div class="col-xs-7">
-						<a href="{{ service.url }}" class="btn btn-block btn-primary">View Service</a>
-		    	</div>
-	    	</div>
+	    	<p class="service-price">${{ service.price }}</p>
+	    	<a href="{{ service.url }}" class="btn btn-primary">View Service</a>
 	    </div>
     </div>
 	</div>

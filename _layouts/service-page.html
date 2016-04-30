@@ -13,6 +13,12 @@ layout: default
       <div class="service-checkout">
         <h2 class="service-title">{{ page.title }}</h2>
         {{ content }}
+        <div class="service-details">
+          {% for detail in page.details %}
+            <p>{{detail}}</p>
+          {% endfor %}
+        </div>
+        <p class="service-price center"><span>Price: </span>${{ page.price }}</p>
       </div>
      {% if page.type == "online" %}
        <div class="service-guide">
@@ -20,7 +26,7 @@ layout: default
          <ul>
            <li>All materials will be securely delivered with 
            <a href="https://www.dropbox.com/home" target="_blank">Dropbox</a> to your preferred email, where they will be available
-           for download. No sign up necessary!</li>
+           for download directly from the cloud. No email attachments and no sign up necessary!</li>
            <li>Please allow 1-2 weeks for preparation and delivery time.</li>
            <li>Secure checkout with 
            <a href="https://www.paypal.com/home" target="_blank">Paypal</a></li>
@@ -96,8 +102,7 @@ layout: default
           but exact time and place provide the greatest detail and insight.</p>
         </div>
       </form>
-      <p class="service-price center">${{ page.price }}</p>
-      <button type="button" id="checkoutButton" class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">
+      <button type="button" id="checkoutButton" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#checkoutModal">
         Confirm and Checkout
       </button>
     </div>

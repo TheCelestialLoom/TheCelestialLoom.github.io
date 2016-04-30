@@ -134,8 +134,11 @@ li:before {
     padding-top: 20px;
 }
 .service-purchase {
-    padding-top: 10px;
-    text-align: right;
+    padding: 10px;
+    * {
+        display: inline-block;
+    }
+    text-align: center;
 }
 .service-price {
     font-style: italic;
@@ -145,6 +148,11 @@ li:before {
     padding-right: 15px;
     &.center {
         text-align: center;
+        font-size: 2.75rem;
+    }
+    span {
+        color: black;
+        font-size: 2rem;
     }
 }
 .service-title {
@@ -287,7 +295,7 @@ li:before {
     }
     .content {
         padding-top: 50px;
-        margin-left: 50px;
+        margin-left: 40px;
     }
     .page-content {
         margin-left: 10px;
@@ -333,10 +341,6 @@ li:before {
     .page-content-row {
         margin-bottom: 0px;
         padding-top: 0px;
-    }
-    .service-purchase {
-        margin-left: -10px;
-        margin-right: -10px;
     }
     .service {
         border-bottom: 1px solid #d3d3d3;
@@ -558,4 +562,13 @@ li:before {
     padding: 5px;
     padding-left: 15px;
     font-weight: bold;
+}
+.service-details {
+    padding: 20px;
+    font-style: italic;
+    font-size: 1.5rem;
+    i {
+        font-size: 3rem;
+        margin-right: 5px;
+    }
 }
