@@ -1,9 +1,7 @@
 // Form Module
-var formCompiler = function($sourceForm, $paypalField, $modalField) {
-	var collectFieldValuesFromForm = function() {
-	    var fields = ["#clientName", "#email", "#birthPlace"];
-	    var dateFields = ["#birthMonth", "#birthDay", "#birthYear"];
-	    var timeFields =  ["#birthTime", "#birthTimeAm"];
+var formCompiler = function($sourceForm, $paypalField, $modalField, formFieldArray) {
+	
+	var collectFieldValuesFromForm = function(fieldArrays) {
 	    var mapFieldValues = function(fieldArray) {
     	    return fieldArray.map(function(field) {
     	        var $field = $sourceForm.find(field);
@@ -14,9 +12,9 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
     	    });
 	    };
 	    return {
-    	    fieldValues: mapFieldValues(fields),
-    	    dateFieldValues: mapFieldValues(dateFields),
-    	    timeFieldValues: mapFieldValues(timeFields)
+    	    fieldValues: mapFieldValues(fieldArrays.fields),
+    	    dateFieldValues: mapFieldValues(fieldArrays.dateFields),
+    	    timeFieldValues: mapFieldValues(fieldArrays.timeFields)
 	    };
 	};
 	
@@ -39,7 +37,6 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 	var checkForFieldErrors = function(fieldValueArray, $submitButton) {
 	   var errorsFlag = false;
 	   var warning = "<div class='alert alert-danger'>required field</div>";
-	   var formWarning = "<div class='alert alert-danger'>some required fields are missing</div>";
 	   fieldValueArray.fieldValues.forEach(function(field) {
 	      if (field.value == "" || field.value == null) {
 	          if (field.$field.attr("data-optional") !== "true") {
@@ -68,9 +65,6 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 	          }
 	      } 
 	   }
-	   if (errorsFlag) {
-	       $submitButton.after(formWarning);
-	   }
 	   return errorsFlag;
 	};
 	
@@ -83,23 +77,31 @@ var formCompiler = function($sourceForm, $paypalField, $modalField) {
 		    $checkoutButton.click(function(element) {
 		        element.preventDefault();
 		        clearErrors();
-		        var fieldValues = collectFieldValuesFromForm();
-		        if (checkForFieldErrors(fieldValues, $(element.target))) {
-		           return false;
+		        
+		      	var formWarning = "<div class='alert alert-danger'>some required fields are missing</div>";
+		        var fieldErrors = false;
+		        var targetValueArray = [];
+		        formFieldArray.forEach(function(formFields) {
+		        	var fieldValues = collectFieldValuesFromForm(formFields);
+			        if (checkForFieldErrors(fieldValues, $(element.target))) {
+			           fieldErrors = true;
+			        }
+	        		targetValueArray.push(compileFields(fieldValues));
+		        });
+		        if (fieldErrors) {
+	       			$checkoutButton.after(formWarning);
+		        	return false;
 		        }
-		 
-        		var targetValue = compileFields(fieldValues);
-		        $paypalField.val(targetValue.join('; '));
-		        $modalField.html(targetValue.join('<br />'));
+		        var paypalFieldValues = targetValueArray.map(function(item) {
+		        	return item.join('; ');
+		        });
+		        var modalFieldValues = targetValueArray.map(function(item) {
+		        	return item.join('<br />');
+		        });
+		        $paypalField.val(paypalFieldValues.join(' / '));
+		        $modalField.html(modalFieldValues.join('<hr />'));
 		    });
 		}
 	};
 	
 };
-
-// On jquery load
-$(function() {
-    $(".paypal-form table").hide();
-	var paypalFormCompiler = formCompiler($("#order-form"), $("[name='os0']"), $(".birth-form-info"));
-	paypalFormCompiler.registerCheckoutClick($("#checkoutButton"));
-});

@@ -158,6 +158,9 @@ li:before {
 .service-title {
     font-style: italic;
     color: #b12704;
+    &.center {
+        text-align: center;
+    }
 }
 .service-content {
     overflow: auto;
