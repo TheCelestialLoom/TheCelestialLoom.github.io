@@ -41,7 +41,7 @@ var rssFeedCreator = function() {
 		render: function() {
 			parseRSS('https://nikiastro.wordpress.com/feed/', function(feed) {
 				var lastEntry = feed.entries[0];
-				var $entryContent = $(lastEntry.content);
+				var $entryContent = $(lastEntry.content.replace(/http:/g, 'https:'));
 				var $blogContent= $entryContent.filter("p, ul").slice(0,numberOfParagraphs);
 				renderContent(lastEntry, $blogContent);
 			}, function() {
