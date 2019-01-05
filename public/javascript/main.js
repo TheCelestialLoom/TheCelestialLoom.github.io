@@ -10,7 +10,7 @@ var rssFeedCreator = function() {
 	    url: url,
 	    dataType: 'json',
 	    success: function(data) {
-	      	successCallback(data.query.results);
+	      	successCallback(data);
 	    },
 	    error: function(er) {
 	    	errorCallback();
@@ -39,10 +39,10 @@ var rssFeedCreator = function() {
 	
 	return {
 		render: function() {
-			var yahooYQLendpoint = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%20in%20(\'https%3A%2F%2Fnikiastro.wordpress.com%2Ffeed%2F\')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
-			parseRSS(yahooYQLendpoint, function(feed) {
-				var lastEntry = feed.item[0];
-				var $entryContent = $(lastEntry.encoded.replace(/http:/g, 'https:'));
+			var rss2jsonEndpoint = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnikiastro.wordpress.com%2Ffeed%2F'
+			parseRSS(rss2jsonEndpoint, function(feed) {
+				var lastEntry = feed.items[0];
+				var $entryContent = $(lastEntry.content.replace(/http:/g, 'https:'));
 				var $blogContent= $entryContent.filter("p, ul").slice(0,numberOfParagraphs);
 				renderContent(lastEntry, $blogContent);
 			}, function() {
