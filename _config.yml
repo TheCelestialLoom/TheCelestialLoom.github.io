@@ -2,7 +2,7 @@
 title: The Celestial Loom
 email: nikiastro@att.net
 baseurl: "/"
-url: "http://www.celestialloomastrology.com" # the base hostname & protocol for your site
+url: "https://www.celestialloomastrology.com" # the base hostname & protocol for your site
 
 blog_paragraphs: 5 # number of <p> tags rendered from RSS feed
 
